@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
     end
 
     config.vm.define "n9k2" do |node|
-        node.vm.box = "n9000v-923"
+        node.vm.box = BOX 
         # When booting a n9000v box from scratch this actually works!
         node.vm.base_mac = "0800276DEEAA"
 

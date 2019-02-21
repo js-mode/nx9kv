@@ -29,3 +29,18 @@ The code used in my **[NX-OSv 9000 Automation](https://www.trueneutral.eu/tag/la
         save_when: always
         timeout: 30
         provider: "{{ ssh }}"
+
+
+        user: wavefront
+        group: network-operator
+        authentication: md5
+        pwd: cisco123
+
+        authentication: md5
+        encrypt: True
+        group: "network-operator"
+        # version: 3
+        state: present
+        user: wavefront
+        privacy: "{{ ansible_snmp_privacy_auth }}"
+        pwd: "{{ ansible_snmp_user_auth }}"
