@@ -5,37 +5,42 @@
 
   vars:
     ssh:
-      host: "{{ ansible_ssh_host }}"
-      username: "admin"
-      password: "admin"
+      host: '{{ ansible_ssh_host }}'
+      username: 'admin'
+      password: 'admin'
       transport: cli
 
   tasks:
     - name: configure hostname and domain-name
       nxos_system:
-        provider: "{{ ssh }}"
-        hostname: "{{ inventory_hostname }}"
+        provider: '{{ ssh }}'
+        hostname: '{{ inventory_hostname }}'
         domain_name: vagrantlab.local
 
     - name: ensure nxapi is enabled
       nxos_feature:
         feature: nxapi
         state: enabled
-        provider: "{{ ssh }}"
+        provider: '{{ ssh }}'
 
     - name: ensure lldp is enabled
       nxos_feature:
         feature: lldp
         state: enabled
-        provider: "{{ ssh }}"
+        provider: '{{ ssh }}'
 
     - name: Create SNMPv3 user
       nxos_snmp_user:
         user: wavefront
         group: network-operator
         authentication: md5
-        pwd: cisco123 
+        pwd: cisco123
         state: present
         encrypt: True
       notify: save config
 
+    - name: save config
+      nxos_config:
+        save_when: always
+        timeout: 30
+        provider: '{{ ssh }}'

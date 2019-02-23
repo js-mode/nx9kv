@@ -1,14 +1,12 @@
-BOX = "n9000v-923"
+BOX = "n9000v"
 
 Vagrant.configure("2") do |config|
 
     # Deploy 3 Nodes
-    
+
     config.vm.define "n9k1" do |node|
 
-        node.ssh.shell = "run bash"
-
-        node.vm.box = BOX 
+        node.vm.box = BOX
         # When booting a n9000v box from scratch this actually works!
         node.vm.base_mac = "0800276CEEAA"
 
@@ -34,7 +32,7 @@ Vagrant.configure("2") do |config|
             v.customize ["modifyvm", :id, "--vram", "24"]
             v.customize ["modifyvm", :id, "--cpus", "1"]
             v.customize ["modifyvm", :id, "--uartmode1", "server", '/tmp/n9k1']
-            # v.customize ["modifyvm", :id, "--nic1", "bridged"]  
+            # v.customize ["modifyvm", :id, "--nic1", "bridged"]
             v.customize ["modifyvm", :id, "--nicpromisc2", "allow-all"]
             v.customize ["modifyvm", :id, "--nicpromisc3", "allow-all"]
             v.customize ["modifyvm", :id, "--nicpromisc4", "allow-all"]

@@ -1,5 +1,4 @@
 ---
-
 ####### README FIRST!!!
 # This playbook has been written pre-Ansible 2.5!
 # Using the facts module with a provider is deprecated in favor of "network_cli" or "httpapi".
@@ -13,24 +12,24 @@
 
   vars:
     ssh:
-      host: "{{ ansible_ssh_host }}"
-      username: "vagrant"
-      password: "vagrant"
+      host: '{{ ansible_ssh_host }}'
+      username: 'vagrant'
+      password: 'vagrant'
       transport: cli
 
     nxapi:
-      host: "{{ ansible_ssh_host }}"
-      username: "vagrant"
-      password: "vagrant"
+      host: '{{ ansible_ssh_host }}'
+      username: 'vagrant'
+      password: 'vagrant'
       transport: nxapi
       use_ssl: yes
       validate_certs: no
-      port: "{{ ansible_nxapi_port }}"
+      port: '{{ ansible_nxapi_port }}'
 
   tasks:
     - name: get nxos facts via ssh
       nxos_facts:
-        provider: "{{ ssh }}"
+        provider: '{{ ssh }}'
         gather_subset:
           - all
       register: nxfacts_ssh
@@ -40,7 +39,7 @@
 
     - name: get nxos facts via nxapi
       nxos_facts:
-        provider: "{{ nxapi }}"
+        provider: '{{ nxapi }}'
         gather_subset:
           - all
       register: nxfacts_nxapi

@@ -1,7 +1,0 @@
-[all:vars]
-ansible_connection = local
-
-[n9k]
-n9k1 ansible_ssh_host=10.10.0.199 ansible_ssh_port=22 ansible_nxapi_port=443
-n9k2 ansible_ssh_host=10.10.0.200 ansible_ssh_port=22 ansible_nxapi_port=443
-n9k3 ansible_ssh_host=10.10.0.201 ansible_ssh_port=22 ansible_nxapi_port=443

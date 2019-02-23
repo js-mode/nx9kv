@@ -7,3 +7,6 @@ venv
 *.py.swp
 facts-*.json
 *.retry
+*.vmdk
+*.box
+*.bin
