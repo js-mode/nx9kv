@@ -31,16 +31,11 @@
 
     - name: Create SNMPv3 user
       nxos_snmp_user:
+        provider: '{{ ssh }}'
         user: wavefront
         group: network-operator
         authentication: md5
         pwd: cisco123
         state: present
+        privacy: cisco123
         encrypt: True
-      notify: save config
-
-    - name: save config
-      nxos_config:
-        save_when: always
-        timeout: 30
-        provider: '{{ ssh }}'

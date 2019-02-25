@@ -2,4 +2,4 @@
 ansible_connection = local
 
 [n9k]
-n9k1 ansible_ssh_host=192.168.0.168 ansible_nxapi_port=4431
+n9k1 ansible_ssh_host=10.10.0.199 ansible_nxapi_port=4431

@@ -13,14 +13,14 @@
   vars:
     ssh:
       host: '{{ ansible_ssh_host }}'
-      username: 'vagrant'
-      password: 'vagrant'
+      username: 'admin'
+      password: 'admin'
       transport: cli
 
     nxapi:
       host: '{{ ansible_ssh_host }}'
-      username: 'vagrant'
-      password: 'vagrant'
+      username: 'admin'
+      password: 'admin'
       transport: nxapi
       use_ssl: yes
       validate_certs: no

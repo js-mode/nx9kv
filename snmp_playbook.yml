@@ -1,0 +1,23 @@
+---
+- name: POST VAGRANT UP PROVISIONING
+  hosts: n9k1
+  gather_facts: no
+
+  vars:
+    ssh:
+      host: '{{ ansible_ssh_host }}'
+      username: 'admin'
+      password: 'admin'
+      transport: cli
+
+  tasks:
+    - name: Create SNMPv3 user
+      nxos_snmp_user:
+        provider: '{{ ssh }}'
+        user: wavefront
+        authentication: md5
+        pwd: cisco123
+        state: present
+        privacy: cisco123
+        encrypt: True
+        group: network-operator
