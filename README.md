@@ -24,3 +24,9 @@ Commands needed after VirtualBox and Vagrant have been successfully installed:
    6a. Change network settings for Adapter 1 from NAT to Bridged Adapter and set Promiscuous Mode to Allow All (don't need port forwarding because we are going to set up a static IP that allows you to ssh into switch without needing specific port)
    6b. Now go back to the serial "socat" connection to the n9k1 switch and log in with "admin"/"admin".
    6c. enter following commands to set up static IP and mgmt access:
+
+
+9) Make sure that you run "no password strength-check"
+10) snmp-server host 10.10.0.144 version 3 priv wavefront udp-port 162
+10) snmp-server host 10.10.0.144 use-vrf management udp-port 162
+11) Force a trap i.e. interface Ethernet 1/3 & then "shutdown"

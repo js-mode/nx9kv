@@ -1,4 +1,4 @@
-BOX = "n9000v"
+BOX = "nxosv-9.2.3.box"
 
 Vagrant.configure("2") do |config|
 

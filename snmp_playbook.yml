@@ -10,6 +10,8 @@
       password: 'admin'
       transport: cli
 
+  # Below task will not work if password strength-check is enabled on n9k
+
   tasks:
     - name: Create SNMPv3 user
       debugger: always
@@ -17,10 +19,8 @@
         provider: '{{ ssh }}'
         user: wavefront
         authentication: md5
-        pwd: cisco123
+        pwd: cisco123 
         state: present
         privacy: cisco123
         encrypt: True
         group: network-operator
-        auth_pass: cisco123
-        authorize: True
