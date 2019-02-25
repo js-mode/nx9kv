@@ -1,0 +1,10 @@
+---
+- name: snmp configuration
+  hosts: n9k
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: create snmp user with auth parameters
+      nxos_snmp_user: user=user1 group="network-operator" auth=md5 pwd=cisco123 privacy=cisco321
+      register: data
