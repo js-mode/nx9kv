@@ -19,8 +19,8 @@
         provider: '{{ ssh }}'
         user: wavefront
         authentication: md5
-        pwd: cisco123 
+        pwd: '{{ telegraf_snmp_token }}' 
         state: present
-        privacy: cisco123
+        privacy: '{{ telegraf_snmp_token }}'
         encrypt: True
         group: network-operator

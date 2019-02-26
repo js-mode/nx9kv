@@ -15,6 +15,8 @@ Write-up can be found on **[my blog here](https://www.trueneutral.eu/2018/nxosv-
 
 Commands needed after VirtualBox and Vagrant have been successfully installed:
 
+For Nexus Devices -- below are the steps on a Mac to get a local environment set up.  If you are using another OS or need more detailed information please go to **[Cisco 9000v](https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/7-x/nx-osv/configuration/guide/b_Cisco_Nexus_9000v/b_Cisco_Nexus_9000v_chapter_011.html#concept_B4B164C6D62E49A6998ED020531B639B)**
+
 1. Download nxosv.9.2.3.box from \${URL}
 2. vagrant box add --name n9000v nxosv.9.2.3.box # from within directory
 3. vagrant up n9k1
