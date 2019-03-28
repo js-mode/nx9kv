@@ -1,6 +1,6 @@
 ---
 - name: POST VAGRANT UP PROVISIONING
-  hosts: n9k1
+  hosts: n9k2
   gather_facts: no
 
   vars:
@@ -39,3 +39,38 @@
         state: present
         privacy: cisco123
         encrypt: True
+
+    - name: Enable SNMP Traps
+      nxos_snmp_traps:
+        group: all
+        state: enabled
+
+    - name: Setup SNMP Host
+      nxos_snmp_host: 
+        snmp_host: 10.10.0.144
+        community: wavefront
+        state: present
+        snmp_type: trap
+        provider: '{{ ssh }}'
+        v3: priv
+        upd: 162
+        version: v3
+        vrf: management
+
+    - name: configure no password strength check
+      nxos_command: 
+        commands: 
+          - configure terminal
+          - no password strength-check
+        wait_for:
+          - result[0] contains no
+
+    - name: configure globalEnforcePriv 
+      nxos_command:
+        commands: 
+          - configure terminal
+          - snmp-server globalEnforcePriv 
+        wait_for:
+          - result[0] contains snmp
+
+
